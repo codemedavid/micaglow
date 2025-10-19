@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "nprogress/nprogress.css";
 import { Providers } from "@/lib/providers";
@@ -68,6 +69,14 @@ export default function RootLayout({
             <Toaster />
           </Providers>
         </ProgressBarProvider>
+        
+        {/* Lead Connector Chat Widget */}
+        <Script 
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="68f559a649665e7db7885af9"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
