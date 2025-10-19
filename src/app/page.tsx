@@ -64,14 +64,6 @@ export default function HomePage() {
                 </Link>
               </nav>
             </div>
-            <div className="flex items-center gap-3">
-              <Link href="/auth/login">
-                <Button size="sm" className="rounded-full">
-                  Sign In
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </header>
@@ -97,12 +89,6 @@ export default function HomePage() {
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
               FAQ
-            </Link>
-            <Link 
-              href="/auth/login" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
-            >
-              Sign In
             </Link>
           </nav>
         </div>
@@ -519,7 +505,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <FAQAccordion maxCategories={4} />
+          <FAQAccordion maxCategories={6} />
 
           {/* View All FAQ Link */}
           <div className="text-center mt-12">

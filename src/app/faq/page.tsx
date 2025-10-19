@@ -69,7 +69,7 @@ export default function FAQPage() {
                 <p className="text-muted-foreground mb-6">
                   Can&apos;t find what you&apos;re looking for? Contact our admin team for personalized assistance.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex justify-center">
                   <a 
                     href="https://wa.me/639154901224" 
                     target="_blank" 
@@ -79,11 +79,6 @@ export default function FAQPage() {
                       Contact via WhatsApp
                     </Button>
                   </a>
-                  <Link href="/batches">
-                    <Button variant="outline" className="rounded-full">
-                      Browse Batches
-                    </Button>
-                  </Link>
                 </div>
               </CardContent>
             </Card>

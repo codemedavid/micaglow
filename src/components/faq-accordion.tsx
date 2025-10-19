@@ -24,6 +24,14 @@ const faqData = [
         question: 'Where can I find instructions for preparing and injecting peptides?',
         answer: 'Refer to the Prep & Injection Guide linked in the peptide dosing guide for proper reconstitution, syringe sizing, and injection protocols.',
       },
+      {
+        question: 'Do you have a minimum order?',
+        answer: 'No. There is no minimum order for individual or group buys.',
+      },
+      {
+        question: 'What is Tirzepatide and where does it come from?',
+        answer: 'U.S. FDA-approved Tirzepatide brands are Mounjaro and Zepbound. Other sources are typically from China.',
+      },
     ],
   },
   {
@@ -113,6 +121,174 @@ const faqData = [
       {
         question: 'How often should I cycle peptides like Epitalon?',
         answer: 'Epitalon (10MG) is dosed 5-10mg daily for 10-20 days, cycled twice a year.',
+      },
+    ],
+  },
+  {
+    category: 'Ordering and Shipping',
+    icon: '📦',
+    questions: [
+      {
+        question: 'What is the individual buy minimum order?',
+        answer: '1 full box (10 vials). Order ships straight to your door with its own tracking number. Can be purchased anytime (no need to wait for others).',
+      },
+      {
+        question: 'What are the individual buy shipping tiers?',
+        answer: '$45 = up to 3 peptides + 1 BAC water. $60 = up to 5 peptides + 2 BAC waters or 3 peptides + 3 BAC waters. $70 = 9–13 peptides.',
+      },
+      {
+        question: 'What are the group buy details?',
+        answer: 'Order any number of vials (up to 15 boxes total/person/batch). Shipping is cheaper (cost split). Can buy per vial. Ships to seller first, then sent locally.',
+      },
+      {
+        question: 'Can I mix peptides in one box?',
+        answer: 'No. Boxes are pre-packed with 10 vials of the same peptide directly from the factory.',
+      },
+      {
+        question: 'How long does delivery take?',
+        answer: 'Turnaround from the factory to the Philippines is usually 2–3 weeks (or 7–10 days). Wait time is ~2 weeks for individual and ~3 weeks for group buy.',
+      },
+      {
+        question: 'How do I track my order?',
+        answer: 'Tracking number and link to the third-party freight forwarder\'s page will be sent. Tracking updates take 24–48 hours. Public carriers (LBC, DHL, UPS) are not used.',
+      },
+      {
+        question: 'What if my package is held by customs?',
+        answer: 'The seller will re-ship it if it gets held by customs.',
+      },
+      {
+        question: 'Can I order from overseas?',
+        answer: 'Group buy overseas shipping is not allowed. You must have a local PH address. Items confiscated/held overseas will not be reshipped or replaced.',
+      },
+    ],
+  },
+  {
+    category: 'Payment and Process',
+    icon: '💳',
+    questions: [
+      {
+        question: 'How do I place an order? (Step 1: Collect Orders)',
+        answer: 'Send your final order with the name, milligrams, and quantity of each item.',
+      },
+      {
+        question: 'How do I place an order? (Step 2: Get Total)',
+        answer: 'Receive the total amount in pesos (with conversion and shipping fee).',
+      },
+      {
+        question: 'How do I place an order? (Step 3: Make Payment)',
+        answer: 'Make payment via Union Bank, ChinaBank, GoTyme, SeaBank (MariBank), GCash, BPI, or PayMaya. Avoid Bitcoin/PayPal (5–10% handling fees).',
+      },
+      {
+        question: 'How do I place an order? (Step 4: Shipping Details)',
+        answer: 'Send: Full name, complete address with ZIP code, and phone number.',
+      },
+      {
+        question: 'When is payment due?',
+        answer: 'Payment must be made the same day the invoice is sent, or the order will be forfeited. Orders placed through DM will not be counted.',
+      },
+      {
+        question: 'What happens after I pay?',
+        answer: 'Upon making payment, you will be added to a private group exclusively for verified buyers.',
+      },
+    ],
+  },
+  {
+    category: 'Product Information',
+    icon: '🧪',
+    questions: [
+      {
+        question: 'Do you have stock on hand?',
+        answer: 'No. Orders are placed directly with the source. Stock is only for personal use (weight loss, longevity, etc.).',
+      },
+      {
+        question: 'What is the peptide shelf life?',
+        answer: 'Lyophilized (freeze-dried) peptides last 18–24 months (sealed/refrigerated/frozen). Reconstituted peptides last up to 28 days in the fridge.',
+      },
+      {
+        question: 'Is Bacteriostatic Water (BAC Water) included?',
+        answer: 'No. Must be bought separately. 10 ml (10 vials) costs $35 (now ₱10); 3 ml (10 vials) costs $30 (now ₱8).',
+      },
+      {
+        question: 'Can I use sterile water instead of BAC water?',
+        answer: 'No. Use bacteriostatic water for multi-use vials (like peptides, Tirzepatide, HCG); sterile water is for single-use only.',
+      },
+      {
+        question: 'Are supplies (dosing guide, syringe, label, pads) included?',
+        answer: 'No. Supplies are not included as the order is direct from the factory. Resellers usually add these extras.',
+      },
+      {
+        question: 'What are the recommended syringe brands?',
+        answer: 'Embesta BD Ultra-fine insulin syringe 6mm and Sure Guard Insulin syringe.',
+      },
+      {
+        question: 'Do you have a COA (Certificate of Analysis)?',
+        answer: 'Digital COA is available upon request (COA 7/2025 & 8/2025). Tirzepatide COA is already in the works (shipped to a US lab).',
+      },
+    ],
+  },
+  {
+    category: 'Group Buy vs Individual',
+    icon: '👥',
+    questions: [
+      {
+        question: 'What is the difference between individual and group buy?',
+        answer: 'Individual: 1 full box (10 vials) minimum, ships to your door. Group buy: Any number of vials (up to 15 boxes total/person/batch), cheaper shipping (cost split), ships to seller first then locally.',
+      },
+    ],
+  },
+  {
+    category: 'Shipping Costs and Local Delivery',
+    icon: '🚚',
+    questions: [
+      {
+        question: 'What is the standard international shipping fee?',
+        answer: 'Standard rate is $45 (around ₱2,622.15 at ₱58.21 = $1, or ₱2,542.25 at ₱56.50 = $1). Covers up to four (4) boxes only/up to 3 peptides + 1 BAC water.',
+      },
+      {
+        question: 'Why is the standard shipping rate $45?',
+        answer: 'In the grey market, most vendors start shipping fees around $45. The vendor uses a freight forwarder who bases the cost on size and weight, not per batch.',
+      },
+      {
+        question: 'What are the group buy shipping fee updates?',
+        answer: 'International shipping cost is split (approx. ₱550 per person). Local shipping is now FREE (was ₱500 per address).',
+      },
+      {
+        question: 'What is the local delivery cost?',
+        answer: 'Once items arrive, local delivery (via Lalamove) is a separate cost (usually ₱100–₱230). LBC shipping is a standard ₱250 fee.',
+      },
+    ],
+  },
+  {
+    category: 'About the Seller',
+    icon: '👤',
+    questions: [
+      {
+        question: 'What is Mica\'s current peptide stack (Weekly)?',
+        answer: 'Mondays: Tirzepatide (AM or mid-day). Thursdays/Sundays: Thymosin Alpha-1.',
+      },
+      {
+        question: 'What is Mica\'s current peptide stack (Mon-Fri)?',
+        answer: 'Mornings: NAD+ (25–50 mg), Semax, Selank, GHK-Cu topical. Evenings: Tesamorelin, DSIP, GLOW.',
+      },
+      {
+        question: 'How does the vendor partnership and compensation work?',
+        answer: 'Seller works with a trusted grey market vendor and receives peptides (not cash) to help manage ADHD. For transparency, they do not earn money.',
+      },
+      {
+        question: 'Is this 100% safe from scams?',
+        answer: '100% guaranteed safe from scams. Two types of scammers: those who take money and send nothing, and those who send inert peptides (salt).',
+      },
+      {
+        question: 'Are there support groups available?',
+        answer: 'There is one support group open to everyone and an exclusive one for verified buyers.',
+      },
+      {
+        question: 'How do I contact for orders (Luzon & Visayas)?',
+        answer: 'DM @Phoebe for individual purchases and updates.',
+      },
+      {
+        question: 'How do I contact for orders (Mindanao)?',
+        answer: 'DM @Gilia for individual buys and ALL orders and updates.',
       },
     ],
   },
