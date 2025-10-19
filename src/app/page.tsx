@@ -132,9 +132,9 @@ export default function HomePage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
-                <Link href="/batches">
+                <Link href="/dosing-guide">
                   <Button size="lg" className="rounded-full text-base px-8 shadow-lg hover:shadow-xl transition-all">
-                    Browse Active Batches
+                    Review Dosing Guide
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
