@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+
+ - "Avoid marking every component as 'use client'. Only use client components when necessary (e.g., for interactivity, browser APIs, or stateful UI)."
+  - "Prefer server components and server-side rendering (SSR) whenever possible for better performance and SEO."
+  - "Always aim for the fastest render path: minimize bundle size, reduce hydration cost, and leverage caching and static generation where possible."
+  - "Use Next.js data fetching strategies appropriately: getServerSideProps for dynamic SSR, getStaticProps for static pages, and caching where applicable."
+  - "Optimize images, scripts, and dependencies using Next.js built-in optimizations (next/image, dynamic imports, etc.)."
+  - "Ensure that performance, accessibility, and SEO are considered in every implementation."
