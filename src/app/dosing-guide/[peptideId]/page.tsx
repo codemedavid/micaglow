@@ -460,5 +460,9 @@ export default async function PeptideDetailPage({ params }: PageProps) {
       </div>
     </div>
   )
+  } catch (error) {
+    console.error('Error loading peptide:', error)
+    notFound()
+  }
 }
 
