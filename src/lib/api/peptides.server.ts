@@ -7,18 +7,26 @@ export type Peptide = Database['public']['Tables']['peptides']['Row']
  * Server-side: Fetch all active peptides
  */
 export async function getAllPeptides(): Promise<Peptide[]> {
-  const supabase = await createClient()
+  try {
+    const supabase = await createClient()
 
-  const { data, error } = await supabase
-    .from('peptides')
-    .select('*')
-    .eq('is_active', true)
-    .order('category', { ascending: true })
-    .order('name', { ascending: true })
+    const { data, error } = await supabase
+      .from('peptides')
+      .select('*')
+      .eq('is_active', true)
+      .order('category', { ascending: true })
+      .order('name', { ascending: true })
 
-  if (error) throw error
+    if (error) {
+      console.error('Error fetching peptides:', error)
+      return []
+    }
 
-  return data || []
+    return data || []
+  } catch (error) {
+    console.error('Unexpected error fetching peptides:', error)
+    return []
+  }
 }
 
 /**
