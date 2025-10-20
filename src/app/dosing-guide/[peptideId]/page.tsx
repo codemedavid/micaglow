@@ -38,30 +38,39 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { peptideId } = await params
-  const peptide = await getPeptide(peptideId)
+  try {
+    const { peptideId } = await params
+    const peptide = await getPeptide(peptideId)
 
-  if (!peptide) {
-    return {
-      title: 'Peptide Not Found',
+    if (!peptide) {
+      return {
+        title: 'Peptide Not Found',
+      }
     }
-  }
 
-  return {
-    title: `${peptide.name} - Dosing Guide | Mama Mica`,
-    description: peptide.description || `Complete dosing protocol and information for ${peptide.name}`,
+    return {
+      title: `${peptide.name} - Dosing Guide | Mama Mica`,
+      description: peptide.description || `Complete dosing protocol and information for ${peptide.name}`,
+    }
+  } catch (error) {
+    console.error('Error generating metadata:', error)
+    return {
+      title: 'Peptide Dosing Guide | Mama Mica',
+      description: 'Complete dosing protocols and information for peptides',
+    }
   }
 }
 
 export default async function PeptideDetailPage({ params }: PageProps) {
-  const { peptideId } = await params
-  const peptide = await getPeptide(peptideId)
+  try {
+    const { peptideId } = await params
+    const peptide = await getPeptide(peptideId)
 
-  if (!peptide) {
-    notFound()
-  }
+    if (!peptide) {
+      notFound()
+    }
 
-  const relatedPeptides = peptide.category ? await getRelatedPeptides(peptide) : []
+    const relatedPeptides = peptide.category ? await getRelatedPeptides(peptide) : []
 
   const benefits = (peptide.benefits as string[]) || []
   const sideEffects = (peptide.side_effects as string[]) || []
