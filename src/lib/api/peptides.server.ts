@@ -25,17 +25,25 @@ export async function getAllPeptides(): Promise<Peptide[]> {
  * Server-side: Fetch a single peptide by ID
  */
 export async function getPeptide(id: string): Promise<Peptide | null> {
-  const supabase = await createClient()
+  try {
+    const supabase = await createClient()
 
-  const { data, error } = await supabase
-    .from('peptides')
-    .select('*')
-    .eq('id', id)
-    .single()
+    const { data, error } = await supabase
+      .from('peptides')
+      .select('*')
+      .eq('id', id)
+      .single()
 
-  if (error) throw error
+    if (error) {
+      console.error('Error fetching peptide:', error)
+      return null
+    }
 
-  return data
+    return data
+  } catch (error) {
+    console.error('Unexpected error fetching peptide:', error)
+    return null
+  }
 }
 
 /**
