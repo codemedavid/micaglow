@@ -58,47 +58,63 @@ export async function getPeptide(id: string): Promise<Peptide | null> {
  * Server-side: Get related peptides based on category
  */
 export async function getRelatedPeptides(peptide: Peptide): Promise<Peptide[]> {
-  const supabase = await createClient()
-  
-  if (!peptide.category) {
+  try {
+    const supabase = await createClient()
+    
+    if (!peptide.category) {
+      return []
+    }
+    
+    // Get peptides from the same category, excluding current peptide
+    const { data, error } = await supabase
+      .from('peptides')
+      .select('*')
+      .eq('is_active', true)
+      .eq('category', peptide.category)
+      .neq('id', peptide.id)
+      .limit(6)
+
+    if (error) {
+      console.error('Error fetching related peptides:', error)
+      return []
+    }
+
+    return data || []
+  } catch (error) {
+    console.error('Unexpected error fetching related peptides:', error)
     return []
   }
-  
-  // Get peptides from the same category, excluding current peptide
-  const { data, error } = await supabase
-    .from('peptides')
-    .select('*')
-    .eq('is_active', true)
-    .eq('category', peptide.category)
-    .neq('id', peptide.id)
-    .limit(6)
-
-  if (error) throw error
-
-  return data || []
 }
 
 /**
  * Server-side: Get unique categories
  */
 export async function getCategories(): Promise<string[]> {
-  const supabase = await createClient()
+  try {
+    const supabase = await createClient()
 
-  const { data, error } = await supabase
-    .from('peptides')
-    .select('category')
-    .eq('is_active', true)
-    .not('category', 'is', null)
+    const { data, error } = await supabase
+      .from('peptides')
+      .select('category')
+      .eq('is_active', true)
+      .not('category', 'is', null)
 
-  if (error) throw error
+    if (error) {
+      console.error('Error fetching categories:', error)
+      return []
+    }
 
-  if (!data) return []
+    if (!data) return []
 
-  const categories = [...new Set(
-    data
-      .map((p: { category: string | null }) => p.category)
-      .filter((c): c is string => c !== null)
-  )]
-  return categories.sort()
+    const categories = [...new Set(
+      data
+        .map((p: { category: string | null }) => p.category)
+        .filter((c): c is string => c !== null)
+    )]
+    return categories.sort()
+  } catch (error) {
+    console.error('Unexpected error fetching categories:', error)
+    return []
+  }
 }
 
