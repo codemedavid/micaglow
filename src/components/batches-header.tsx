@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import { Menu, Package, ShoppingBag, Settings, User, Home, Pill, HelpCircle } from 'lucide-react'
+import { Menu, Package, ShoppingBag, Settings, User, Home, Pill, HelpCircle, FileText } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 export function BatchesHeader() {
@@ -28,14 +28,14 @@ export function BatchesHeader() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
               <Link 
-                href="/batches" 
+                href="/" 
                 className={`text-sm font-medium transition-colors ${
-                  pathname === '/batches' || pathname?.startsWith('/batches/')
+                  pathname === '/'
                     ? 'text-primary' 
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                Batches
+                Home
               </Link>
               <Link 
                 href="/dosing-guide" 
@@ -58,27 +58,15 @@ export function BatchesHeader() {
                 FAQ
               </Link>
               <Link 
-                href="/orders" 
+                href="/coa" 
                 className={`text-sm font-medium transition-colors ${
-                  pathname?.startsWith('/orders')
+                  pathname?.startsWith('/coa')
                     ? 'text-primary' 
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                My Orders
+                COA
               </Link>
-              {isAdmin && (
-                <Link 
-                  href="/admin" 
-                  className={`text-sm font-medium transition-colors ${
-                    pathname?.startsWith('/admin')
-                      ? 'text-primary' 
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  Admin
-                </Link>
-              )}
             </nav>
           </div>
           
@@ -116,12 +104,6 @@ export function BatchesHeader() {
                     Home
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/batches" className="flex items-center cursor-pointer">
-                    <Package className="h-4 w-4 mr-2" />
-                    Batches
-                  </Link>
-                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/dosing-guide" className="flex items-center cursor-pointer">
@@ -135,24 +117,12 @@ export function BatchesHeader() {
                     FAQ
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/orders" className="flex items-center cursor-pointer">
-                    <ShoppingBag className="h-4 w-4 mr-2" />
-                    My Orders
+                  <Link href="/coa" className="flex items-center cursor-pointer">
+                    <FileText className="h-4 w-4 mr-2" />
+                    COA
                   </Link>
                 </DropdownMenuItem>
-                {isAdmin && (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <Link href="/admin" className="flex items-center cursor-pointer">
-                        <Settings className="h-4 w-4 mr-2" />
-                        Admin Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                  </>
-                )}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

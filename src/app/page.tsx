@@ -45,10 +45,10 @@ export default function HomePage() {
               </Link>
               <nav className="hidden md:flex items-center gap-6">
                 <Link 
-                  href="#how-it-works" 
+                  href="/" 
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  How It Works
+                  Home
                 </Link>
                 <Link 
                   href="/dosing-guide" 
@@ -62,6 +62,12 @@ export default function HomePage() {
                 >
                   FAQ
                 </Link>
+                <Link 
+                  href="/coa" 
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  COA
+                </Link>
               </nav>
             </div>
           </div>
@@ -73,10 +79,10 @@ export default function HomePage() {
         <div className="overflow-x-auto scrollbar-hide">
           <nav className="flex gap-6 px-6 py-3 min-w-max">
             <Link 
-              href="#how-it-works" 
+              href="/" 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
-              How It Works
+              Home
             </Link>
             <Link 
               href="/dosing-guide" 
@@ -89,6 +95,12 @@ export default function HomePage() {
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
               FAQ
+            </Link>
+            <Link 
+              href="/coa" 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+            >
+              COA
             </Link>
           </nav>
         </div>
@@ -138,12 +150,16 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="#how-it-works">
+                <a 
+                  href="https://drive.google.com/drive/folders/1JVKT-6ZZk2e1ZbqdwcgtfhsDPKXfftkR" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <Button size="lg" variant="outline" className="rounded-full text-base px-8">
-                    Learn More
+                    Download Digital Guides
                     <ExternalLink className="ml-2 h-5 w-5" />
                   </Button>
-                </Link>
+                </a>
               </div>
 
               {/* Trust Indicators */}
@@ -410,65 +426,92 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Horizontal Scrollable Testimonials */}
-          <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-            {/* Scroll container */}
-            <div className="overflow-x-auto scrollbar-hide pb-4">
-              <div className="flex gap-6 min-w-max px-6 md:px-0">
-                {[1, 2, 3, 4, 5, 6].map((idx) => (
-                  <Card 
-                    key={idx} 
-                    className="border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex-shrink-0 w-[280px] md:w-[320px]"
-                  >
-                    <CardContent className="p-0">
-                      {/* Placeholder for testimonial screenshot */}
-                      <div className="aspect-[4/5] bg-gradient-to-br from-muted/30 via-muted/20 to-muted/30 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-                        {/* Background pattern */}
-                        <div className="absolute inset-0 opacity-5">
-                          <div className="absolute inset-0" style={{
-                            backgroundImage: 'repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)',
-                            backgroundSize: '10px 10px'
-                          }} />
-                        </div>
-                        
-                        {/* Icon */}
-                        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center relative z-10">
-                          <Star className="w-10 h-10 text-primary" />
-                        </div>
-                        
-                        {/* Text */}
-                        <div className="text-center space-y-2 relative z-10 px-6">
-                          <p className="text-sm font-semibold text-muted-foreground">
-                            Testimonial Screenshot #{idx}
-                          </p>
-                          <p className="text-xs text-muted-foreground/70">
-                            Replace with actual image
-                          </p>
-                        </div>
-
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Infinite Scrolling Testimonials */}
+          <div className="relative -mx-6 px-6 md:mx-0 md:px-0 overflow-hidden">
+            {/* Infinite scroll container */}
+            <div className="flex gap-6 animate-scroll">
+              {/* First set of testimonials */}
+              {[1, 2, 3, 4, 5, 6].map((idx) => (
+                <Card 
+                  key={`first-${idx}`}
+                  className="border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex-shrink-0 w-[280px] md:w-[320px]"
+                >
+                  <CardContent className="p-0">
+                    {/* Placeholder for testimonial screenshot */}
+                    <div className="aspect-[4/5] bg-gradient-to-br from-muted/30 via-muted/20 to-muted/30 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+                      {/* Background pattern */}
+                      <div className="absolute inset-0 opacity-5">
+                        <div className="absolute inset-0" style={{
+                          backgroundImage: 'repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)',
+                          backgroundSize: '10px 10px'
+                        }} />
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center relative z-10">
+                        <Star className="w-10 h-10 text-primary" />
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="text-center space-y-2 relative z-10 px-6">
+                        <p className="text-sm font-semibold text-muted-foreground">
+                          Testimonial Screenshot #{idx}
+                        </p>
+                        <p className="text-xs text-muted-foreground/70">
+                          Replace with actual image
+                        </p>
                       </div>
 
-                      {/* Optional caption area - uncomment if needed */}
-                      {/* <div className="p-4 bg-white">
-                        <p className="text-sm text-muted-foreground text-center">
-                          Caption for testimonial #{idx}
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              
+              {/* Duplicate set for seamless loop */}
+              {[1, 2, 3, 4, 5, 6].map((idx) => (
+                <Card 
+                  key={`second-${idx}`}
+                  className="border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex-shrink-0 w-[280px] md:w-[320px]"
+                >
+                  <CardContent className="p-0">
+                    {/* Placeholder for testimonial screenshot */}
+                    <div className="aspect-[4/5] bg-gradient-to-br from-muted/30 via-muted/20 to-muted/30 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+                      {/* Background pattern */}
+                      <div className="absolute inset-0 opacity-5">
+                        <div className="absolute inset-0" style={{
+                          backgroundImage: 'repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)',
+                          backgroundSize: '10px 10px'
+                        }} />
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center relative z-10">
+                        <Star className="w-10 h-10 text-primary" />
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="text-center space-y-2 relative z-10 px-6">
+                        <p className="text-sm font-semibold text-muted-foreground">
+                          Testimonial Screenshot #{idx}
                         </p>
-                      </div> */}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                        <p className="text-xs text-muted-foreground/70">
+                          Replace with actual image
+                        </p>
+                      </div>
+
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
             
-            {/* Scroll hint */}
-            <div className="flex justify-center mt-6 gap-2">
-              <div className="text-xs text-muted-foreground flex items-center gap-2">
-                <ArrowRight className="w-4 h-4" />
-                <span>Scroll to see more</span>
-              </div>
-            </div>
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
           </div>
 
           {/* CTA Below Testimonials */}
@@ -476,14 +519,6 @@ export default function HomePage() {
             <div className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
               <ShieldCheck className="w-4 h-4 text-[#3CCB7F]" />
               <span>All testimonials from verified members</span>
-            </div>
-            <div>
-              <Link href="/batches">
-                <Button size="lg" className="rounded-full">
-                  Join Our Community
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -519,6 +554,228 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Verified Resellers Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-[#f7f9ff] to-white">
+        <div className="container mx-auto px-6 max-w-[1200px]">
+          <div className="text-center mb-16 space-y-4">
+            <Badge className="rounded-full px-4 py-1.5 bg-[#3CCB7F] text-white hover:bg-[#3CCB7F]">
+              Trusted Partners
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Verified Resellers
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our trusted network of verified resellers ensures quality and authenticity across all products
+            </p>
+          </div>
+
+          {/* Infinite Scrolling Resellers */}
+          <div className="relative -mx-6 px-6 md:mx-0 md:px-0 overflow-hidden">
+            {/* Infinite scroll container */}
+            <div className="flex gap-6 animate-scroll">
+              {/* First set of resellers */}
+              {[
+                {
+                  name: 'Phoebe',
+                  region: 'Luzon & Visayas',
+                  specialty: 'Individual Orders',
+                  contact: '@Phoebe',
+                  description: 'Specializes in individual purchases and updates for Luzon and Visayas regions',
+                  color: 'from-primary/20 to-primary/40',
+                  icon: '👩‍💼'
+                },
+                {
+                  name: 'Gilia',
+                  region: 'Mindanao',
+                  specialty: 'All Orders',
+                  contact: '@Gilia',
+                  description: 'Handles individual buys and ALL orders and updates for Mindanao region',
+                  color: 'from-secondary/20 to-secondary/40',
+                  icon: '👩‍🔬'
+                },
+                {
+                  name: 'Admin Team',
+                  region: 'Platform Wide',
+                  specialty: 'Support & Coordination',
+                  contact: 'WhatsApp',
+                  description: 'Direct admin support for platform coordination and customer service',
+                  color: 'from-accent/20 to-accent/40',
+                  icon: '👥'
+                },
+                {
+                  name: 'Quality Control',
+                  region: 'Verification Team',
+                  specialty: 'Product Testing',
+                  contact: 'Admin',
+                  description: 'Ensures all products meet pharmaceutical-grade standards and quality requirements',
+                  color: 'from-[#3CCB7F]/20 to-[#3CCB7F]/40',
+                  icon: '🔬'
+                },
+                {
+                  name: 'Customer Support',
+                  region: 'Help Desk',
+                  specialty: 'User Assistance',
+                  contact: 'Support',
+                  description: 'Provides technical support and guidance for platform users and order management',
+                  color: 'from-purple-500/20 to-purple-500/40',
+                  icon: '🎧'
+                }
+              ].map((reseller, idx) => (
+              <Card 
+                  key={`first-${idx}`}
+                  className="border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] flex-shrink-0 w-[320px] md:w-[360px]"
+              >
+                <CardContent className="p-8 space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${reseller.color} flex items-center justify-center text-2xl`}>
+                        {reseller.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-xl">{reseller.name}</h3>
+                        <p className="text-sm text-muted-foreground">{reseller.region}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="text-xs">
+                          {reseller.specialty}
+                        </Badge>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {reseller.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-foreground">Contact:</span>
+                        <span className="text-sm font-semibold text-primary">{reseller.contact}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              
+              {/* Duplicate set for seamless loop */}
+              {[
+                {
+                  name: 'Phoebe',
+                  region: 'Luzon & Visayas',
+                  specialty: 'Individual Orders',
+                  contact: '@Phoebe',
+                  description: 'Specializes in individual purchases and updates for Luzon and Visayas regions',
+                  color: 'from-primary/20 to-primary/40',
+                  icon: '👩‍💼'
+                },
+                {
+                  name: 'Gilia',
+                  region: 'Mindanao',
+                  specialty: 'All Orders',
+                  contact: '@Gilia',
+                  description: 'Handles individual buys and ALL orders and updates for Mindanao region',
+                  color: 'from-secondary/20 to-secondary/40',
+                  icon: '👩‍🔬'
+                },
+                {
+                  name: 'Admin Team',
+                  region: 'Platform Wide',
+                  specialty: 'Support & Coordination',
+                  contact: 'WhatsApp',
+                  description: 'Direct admin support for platform coordination and customer service',
+                  color: 'from-accent/20 to-accent/40',
+                  icon: '👥'
+                },
+                {
+                  name: 'Quality Control',
+                  region: 'Verification Team',
+                  specialty: 'Product Testing',
+                  contact: 'Admin',
+                  description: 'Ensures all products meet pharmaceutical-grade standards and quality requirements',
+                  color: 'from-[#3CCB7F]/20 to-[#3CCB7F]/40',
+                  icon: '🔬'
+                },
+                {
+                  name: 'Customer Support',
+                  region: 'Help Desk',
+                  specialty: 'User Assistance',
+                  contact: 'Support',
+                  description: 'Provides technical support and guidance for platform users and order management',
+                  color: 'from-purple-500/20 to-purple-500/40',
+                  icon: '🎧'
+                }
+              ].map((reseller, idx) => (
+                <Card 
+                  key={`second-${idx}`}
+                  className="border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] flex-shrink-0 w-[320px] md:w-[360px]"
+                >
+                  <CardContent className="p-8 space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${reseller.color} flex items-center justify-center text-2xl`}>
+                        {reseller.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-xl">{reseller.name}</h3>
+                        <p className="text-sm text-muted-foreground">{reseller.region}</p>
+                    </div>
+                  </div>
+
+                    <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="text-xs">
+                          {reseller.specialty}
+                        </Badge>
+                    </div>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {reseller.description}
+                      </p>
+                  </div>
+
+                    <div className="pt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-foreground">Contact:</span>
+                        <span className="text-sm font-semibold text-primary">{reseller.contact}</span>
+                      </div>
+                    </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 pt-16 border-t border-border/50">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-full bg-[#3CCB7F]/10 flex items-center justify-center mx-auto">
+                  <ShieldCheck className="w-6 h-6 text-[#3CCB7F]" />
+                </div>
+                <h3 className="font-bold text-lg">Verified Quality</h3>
+                <p className="text-sm text-muted-foreground">All resellers undergo strict verification and quality checks</p>
+              </div>
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                  <Users className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-bold text-lg">Regional Coverage</h3>
+                <p className="text-sm text-muted-foreground">Dedicated resellers for Luzon, Visayas, and Mindanao regions</p>
+              </div>
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mx-auto">
+                  <Lock className="w-6 h-6 text-secondary" />
+                </div>
+                <h3 className="font-bold text-lg">Secure Process</h3>
+                <p className="text-sm text-muted-foreground">All transactions are secure and tracked through our platform</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 md:py-28 bg-gradient-to-br from-primary via-primary to-primary/90 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]" />
@@ -531,12 +788,6 @@ export default function HomePage() {
               Join our community of informed buyers accessing premium peptides at group pricing. Browse active batches and see how much you can save.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-4">
-              <Link href="/batches">
-                <Button size="lg" variant="secondary" className="rounded-full text-base px-8 shadow-xl hover:scale-105 transition-transform">
-                  View Active Batches
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
               <Link href="/auth/login">
                 <Button size="lg" variant="outline" className="rounded-full text-base px-8 border-white text-white hover:bg-white/10">
                   Request Access
@@ -560,18 +811,16 @@ export default function HomePage() {
             <div className="space-y-4">
               <h4 className="font-semibold">Platform</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/batches" className="hover:text-foreground transition-colors">Batches</Link></li>
                 <li><Link href="/dosing-guide" className="hover:text-foreground transition-colors">Dosing Guide</Link></li>
                 <li><Link href="/faq" className="hover:text-foreground transition-colors">FAQ</Link></li>
+                <li><Link href="/coa" className="hover:text-foreground transition-colors">COA</Link></li>
                 <li><Link href="/auth/login" className="hover:text-foreground transition-colors">Sign In</Link></li>
                 <li><Link href="/cart" className="hover:text-foreground transition-colors">Cart</Link></li>
-                <li><Link href="/orders" className="hover:text-foreground transition-colors">Orders</Link></li>
               </ul>
             </div>
             <div className="space-y-4">
               <h4 className="font-semibold">Support</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</Link></li>
                 <li><Link href="#features" className="hover:text-foreground transition-colors">Features</Link></li>
                 <li><a href="https://wa.me/639154901224" className="hover:text-foreground transition-colors">Contact Admin</a></li>
               </ul>
