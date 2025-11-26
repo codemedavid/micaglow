@@ -308,6 +308,82 @@ export type Database = {
           created_at?: string
         }
       }
+      faq_categories: {
+        Row: {
+          id: string
+          name: string
+          icon: string
+          slug: string
+          display_order: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          icon: string
+          slug: string
+          display_order?: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          icon?: string
+          slug?: string
+          display_order?: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      faq_questions: {
+        Row: {
+          id: string
+          category_id: string
+          question: string
+          answer: string
+          slug: string
+          display_order: number
+          is_active: boolean
+          view_count: number
+          helpful_count: number
+          not_helpful_count: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          category_id: string
+          question: string
+          answer: string
+          slug: string
+          display_order?: number
+          is_active?: boolean
+          view_count?: number
+          helpful_count?: number
+          not_helpful_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          category_id?: string
+          question?: string
+          answer?: string
+          slug?: string
+          display_order?: number
+          is_active?: boolean
+          view_count?: number
+          helpful_count?: number
+          not_helpful_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
     Views: {
       v_batch_peptide_capacity: {

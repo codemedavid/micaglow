@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FAQAccordion } from '@/components/faq-accordion'
+import { getLimitedFAQs } from '@/lib/api/faq'
 import { 
   ShieldCheck, 
   Truck, 
@@ -16,9 +17,8 @@ import {
   HelpCircle
 } from 'lucide-react'
 
-// Force static generation for maximum performance
-// Homepage is pure static content - no need for server-side rendering
-export const dynamic = 'force-static'
+// Revalidate every hour to keep FAQ data fresh
+export const revalidate = 3600
 
 // Enhanced metadata for homepage SEO
 export const metadata = {
@@ -32,7 +32,9 @@ export const metadata = {
 }
 
 
-export default function HomePage() {
+export default async function HomePage() {
+  const faqData = await getLimitedFAQs(6)
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f7f9ff] via-white to-white">
       {/* Header */}
@@ -540,7 +542,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <FAQAccordion maxCategories={6} />
+          <FAQAccordion faqData={faqData} maxCategories={6} />
 
           {/* View All FAQ Link */}
           <div className="text-center mt-12">

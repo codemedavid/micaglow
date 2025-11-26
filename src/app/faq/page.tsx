@@ -1,19 +1,23 @@
-'use client'
-
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FAQAccordion } from '@/components/faq-accordion'
 import { BatchesHeader } from '@/components/batches-header'
+import { getAllFAQs } from '@/lib/api/faq'
 import { 
   ArrowLeft,
   HelpCircle,
   Search
 } from 'lucide-react'
 
+export const metadata = {
+  title: 'Frequently Asked Questions - Mama Mica',
+  description: 'Find answers to all your questions about peptides, group buying, ordering, shipping, dosing, and more. Comprehensive FAQ covering 12 categories.',
+}
 
-export default function FAQPage() {
+export default async function FAQPage() {
+  const faqData = await getAllFAQs()
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f7f9ff] via-white to-white">
       {/* Header with Navigation */}
@@ -46,20 +50,8 @@ export default function FAQPage() {
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="mb-12">
-            <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <input
-                type="text"
-                placeholder="Search FAQ..."
-                className="w-full pl-10 pr-4 py-3 border border-border rounded-full bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-              />
-            </div>
-          </div>
-
           {/* FAQ Categories */}
-          <FAQAccordion showAll={true} />
+          <FAQAccordion faqData={faqData} showAll={true} />
 
           {/* Contact CTA */}
           <div className="mt-16 text-center">
