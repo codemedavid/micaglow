@@ -39,13 +39,14 @@ export async function getAllFAQs(): Promise<FAQCategoryWithQuestions[]> {
 
   if (questionsError) {
     console.error('Error fetching FAQ questions:', questionsError)
-    return categories.map(cat => ({ ...cat, questions: [] }))
+    return (categories || []).map((cat: FAQCategory) => ({ ...cat, questions: [] }))
   }
 
   // Group questions by category
-  const categoriesWithQuestions = categories.map(category => ({
+  const questionsArray: FAQQuestion[] = questions || []
+  const categoriesWithQuestions = categories.map((category: FAQCategory) => ({
     ...category,
-    questions: questions?.filter(q => q.category_id === category.id) || []
+    questions: questionsArray.filter((q: FAQQuestion) => q.category_id === category.id)
   }))
 
   return categoriesWithQuestions
@@ -141,7 +142,7 @@ export async function incrementFAQView(questionId: string): Promise<void> {
   
   const { error } = await supabase.rpc('increment_faq_view', {
     question_id: questionId
-  })
+  } as any)
 
   if (error) {
     console.error('Error incrementing FAQ view:', error)
@@ -158,7 +159,7 @@ export async function voteFAQHelpful(questionId: string, isHelpful: boolean): Pr
   const { error } = await supabase.rpc('vote_faq_helpful', {
     question_id: questionId,
     is_helpful: isHelpful
-  })
+  } as any)
 
   if (error) {
     console.error('Error voting on FAQ:', error)
