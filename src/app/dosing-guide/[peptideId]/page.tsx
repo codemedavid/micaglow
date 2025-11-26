@@ -64,11 +64,20 @@ export default async function PeptideDetailPage({ params }: PageProps) {
 
     const relatedPeptides = peptide.category ? await getRelatedPeptides(peptide) : []
 
-  const benefits = (peptide.benefits as string[]) || []
-  const sideEffects = (peptide.side_effects as string[]) || []
-  const contraindications = (peptide.contraindications as string[]) || []
-  const dosing = (peptide.dosing as unknown as DosingProtocol[]) || []
-  const stacking = (peptide.stacking as string[]) || []
+  // Ensure all array fields are actually arrays
+  const benefits = Array.isArray(peptide.benefits) ? (peptide.benefits as string[]) : []
+  const sideEffects = Array.isArray(peptide.side_effects) ? (peptide.side_effects as string[]) : []
+  const contraindications = Array.isArray(peptide.contraindications) ? (peptide.contraindications as string[]) : []
+  
+  // Ensure dosing is always an array
+  let dosing: DosingProtocol[] = []
+  if (peptide.dosing) {
+    if (Array.isArray(peptide.dosing)) {
+      dosing = peptide.dosing as unknown as DosingProtocol[]
+    }
+  }
+  
+  const stacking = Array.isArray(peptide.stacking) ? (peptide.stacking as string[]) : []
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f7f9ff] via-white to-white">

@@ -18,14 +18,26 @@ interface DosingGuideCardProps {
 }
 
 export function DosingGuideCard({ peptide }: DosingGuideCardProps) {
-  const dosing = (peptide.dosing as unknown as Array<{
+  // Ensure dosing is always an array
+  let dosing: Array<{
     vialSize: string
     reconstitution: string
     frequency: string
     subcutaneous: string
-  }>) || []
+  }> = []
+  
+  if (peptide.dosing) {
+    if (Array.isArray(peptide.dosing)) {
+      dosing = peptide.dosing as Array<{
+        vialSize: string
+        reconstitution: string
+        frequency: string
+        subcutaneous: string
+      }>
+    }
+  }
 
-  const hasDosing = dosing.length > 0
+  const hasDosing = Array.isArray(dosing) && dosing.length > 0
 
   return (
     <Link href={`/dosing-guide/${peptide.id}`}>

@@ -49,6 +49,13 @@ export function PeptideDetailTabs({
   contraindications,
   stacking,
 }: PeptideDetailTabsProps) {
+  // Ensure dosing is always an array (defense in depth)
+  const safeDosing = Array.isArray(dosing) ? dosing : []
+  const safeBenefits = Array.isArray(benefits) ? benefits : []
+  const safeSideEffects = Array.isArray(sideEffects) ? sideEffects : []
+  const safeContraindications = Array.isArray(contraindications) ? contraindications : []
+  const safeStacking = Array.isArray(stacking) ? stacking : []
+
   return (
     <Tabs defaultValue="dosing" className="w-full">
       <TabsList className="grid w-full grid-cols-4">
@@ -72,13 +79,13 @@ export function PeptideDetailTabs({
 
       {/* Dosing Tab */}
       <TabsContent value="dosing" className="space-y-6 mt-8">
-        {dosing.length > 0 ? (
+        {safeDosing.length > 0 ? (
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-4">
               <PillIcon className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">Dosing Protocols</h2>
             </div>
-            {dosing.map((protocol, idx) => (
+            {safeDosing.map((protocol, idx) => (
               <div 
                 key={idx} 
                 className="border-2 border-primary/20 rounded-xl p-6 bg-gradient-to-br from-card to-primary/[0.02] hover:shadow-lg transition-all"
@@ -203,14 +210,14 @@ export function PeptideDetailTabs({
           )}
         </div>
 
-        {benefits.length > 0 && (
+        {safeBenefits.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-emerald-600" />
               <h2 className="font-bold text-xl">Key Benefits</h2>
             </div>
             <div className="grid gap-2 pl-7">
-              {benefits.map((benefit, idx) => (
+              {safeBenefits.map((benefit, idx) => (
                 <div 
                   key={idx} 
                   className="text-sm text-muted-foreground flex items-start gap-2 p-3 rounded-lg hover:bg-emerald-500/5 transition-colors"
@@ -226,14 +233,14 @@ export function PeptideDetailTabs({
 
       {/* Safety Tab */}
       <TabsContent value="safety" className="space-y-6 mt-8">
-        {sideEffects.length > 0 && (
+        {safeSideEffects.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-amber-600" />
               <h2 className="font-bold text-xl">Potential Side Effects</h2>
             </div>
             <div className="grid gap-2 pl-7">
-              {sideEffects.map((effect, idx) => (
+              {safeSideEffects.map((effect, idx) => (
                 <div 
                   key={idx} 
                   className="text-sm text-muted-foreground flex items-start gap-2 p-3 rounded-lg hover:bg-amber-500/5 transition-colors"
@@ -246,14 +253,14 @@ export function PeptideDetailTabs({
           </div>
         )}
 
-        {contraindications.length > 0 && (
+        {safeContraindications.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <ShieldAlert className="h-5 w-5 text-destructive" />
               <h2 className="font-bold text-xl text-destructive">Contraindications</h2>
             </div>
             <div className="grid gap-2 pl-7">
-              {contraindications.map((contra, idx) => (
+              {safeContraindications.map((contra, idx) => (
                 <div 
                   key={idx} 
                   className="text-sm text-muted-foreground flex items-start gap-2 p-3 rounded-lg hover:bg-destructive/5 transition-colors"
@@ -281,14 +288,14 @@ export function PeptideDetailTabs({
 
       {/* Stacking Tab */}
       <TabsContent value="stacking" className="space-y-6 mt-8">
-        {stacking.length > 0 ? (
+        {safeStacking.length > 0 ? (
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-4">
               <Link2 className="h-5 w-5 text-primary" />
               <h2 className="font-bold text-xl">Recommended Combinations</h2>
             </div>
             <div className="grid gap-3">
-              {stacking.map((stack, idx) => (
+              {safeStacking.map((stack, idx) => (
                 <div 
                   key={idx} 
                   className="p-4 bg-gradient-to-r from-primary/[0.05] to-secondary/[0.05] border border-primary/20 rounded-lg hover:shadow-md transition-all"
